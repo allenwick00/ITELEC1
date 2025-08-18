@@ -1,0 +1,14 @@
+public class Main {
+  public static void main(String[] args) {
+  int a = 10, b = 5;
+  int sum = a + b;
+  
+    System.out.println("The sum is: " + sum);
+    
+    if (sum > 10) {
+    System.Out.Println("The sum is greater than 10.");
+    } else { 
+    System.Out.Println("The sum is not greater than 10.");
+    }
+  }
+}
