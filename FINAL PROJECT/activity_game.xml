@@ -1,0 +1,197 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" <!-- Full screen width -->
+    android:layout_height="match_parent"> <!-- Full screen height -->
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage" <!-- Background for the game -->
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_game_activity" <!-- Background image resource -->
+        android:scaleType="centerCrop" <!-- Crop image to fill screen -->
+        android:contentDescription="@string/app_name" /> <!-- Accessibility description -->
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/btnBack" <!-- Back button to return to main menu -->
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp" <!-- Margin from top-left corner -->
+        android:background="@null" <!-- Transparent background -->
+        android:src="@drawable/arrow_back" <!-- Back arrow icon -->
+        android:contentDescription="Back"
+        android:scaleType="fitCenter"
+        android:elevation="10dp" <!-- Elevation above background -->
+        android:layout_alignParentStart="true" <!-- Align to left -->
+        android:layout_alignParentTop="true" <!-- Align to top -->
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"> <!-- Scrollable container -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" <!-- Stack elements vertically -->
+            android:gravity="center_horizontal"> <!-- Center elements horizontally -->
+
+            <!-- High Score Text -->
+            <TextView
+                android:id="@+id/highScoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Score: 0"
+                android:textSize="21sp"
+                android:textColor="#FFD700" <!-- Gold color -->
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Current Score Text -->
+            <TextView
+                android:id="@+id/scoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score: 0"
+                android:textSize="22sp"
+                android:textColor="#FFFFFF" <!-- White color -->
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Quote & Video Container -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="10dp"
+                android:foregroundGravity="center">
+
+                <!-- Quote Container -->
+                <FrameLayout
+                    android:id="@+id/quoteContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="171dp">
+
+                    <TextView
+                        android:id="@+id/quoteText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_quote"
+                        android:text="Movie quote appears here"
+                        android:textSize="20sp"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="italic|bold"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="0"
+                        android:shadowDy="4"
+                        android:shadowRadius="8" /> <!-- Quote with shadow and styling -->
+                </FrameLayout>
+
+                <!-- Centered VideoView -->
+                <VideoView
+                    android:id="@+id/movieVideoView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" <!-- Hidden initially -->
+                    android:elevation="15dp" />
+
+                <!-- Confetti overlay for visual effect -->
+                <ImageView
+                    android:id="@+id/confettiView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:scaleType="center"
+                    android:src="@drawable/confetti_dot"
+                    android:elevation="20dp" />
+
+            </FrameLayout>
+
+            <!-- Audio Button -->
+            <ImageButton
+                android:id="@+id/audioButton"
+                android:layout_width="45dp"
+                android:layout_height="49dp"
+                android:background="@drawable/ripple_play_audio"
+                android:src="@drawable/ic_play"
+                android:contentDescription="Play Audio"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:stateListAnimator="@null" />
+
+            <!-- Guess Input Field -->
+            <EditText
+                android:id="@+id/guessInput"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter movie title"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:inputType="textCapWords"
+                android:layout_marginBottom="20dp"
+                android:textColor="#000000" />
+
+            <!-- Submit Guess Button -->
+            <ImageButton
+                android:id="@+id/submitGuessButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:src="@drawable/bg_submit"
+                android:contentDescription="Submit Guess"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:stateListAnimator="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Hint Button -->
+            <ImageButton
+                android:id="@+id/hintButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:src="@drawable/bg_hint"
+                android:contentDescription="Hint"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:stateListAnimator="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Restart Button -->
+            <ImageButton
+                android:id="@+id/restartButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@null"
+                android:src="@drawable/bg_restart"
+                android:contentDescription="Restart Game"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:stateListAnimator="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="24dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
