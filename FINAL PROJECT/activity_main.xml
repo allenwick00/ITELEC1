@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?> <!-- XML declaration -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" <!-- Android XML namespace -->
+    xmlns:app="http://schemas.android.com/apk/res-auto" <!-- App-specific attributes namespace -->
+    android:layout_width="match_parent" <!-- Layout fills the parent width -->
+    android:layout_height="match_parent"> <!-- Layout fills the parent height -->
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/bgMain" <!-- Unique ID for the background -->
+        android:layout_width="0dp" <!-- ConstraintLayout: width defined by constraints -->
+        android:layout_height="0dp" <!-- ConstraintLayout: height defined by constraints -->
+        android:src="@drawable/bg_main_menu" <!-- Background image resource -->
+        android:scaleType="centerCrop" <!-- Image scales to fill the view, cropping if needed -->
+        app:layout_constraintTop_toTopOf="parent" <!-- Top edge constrained to parent -->
+        app:layout_constraintBottom_toBottomOf="parent" <!-- Bottom edge constrained to parent -->
+        app:layout_constraintStart_toStartOf="parent" <!-- Left edge constrained to parent -->
+        app:layout_constraintEnd_toEndOf="parent"/> <!-- Right edge constrained to parent -->
+
+    <!-- Guideline for Logo placement -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logoGuide" <!-- ID for guideline -->
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" <!-- Horizontal guideline -->
+        app:layout_constraintGuide_percent="0.06" /> <!-- Positioned at 6% from top -->
+
+    <!-- Guideline for Play Button placement -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/playGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" /> <!-- Positioned at 21% from top -->
+
+    <!-- App Logo Image -->
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="wrap_content" <!-- Width based on image -->
+        android:layout_height="wrap_content" <!-- Height based on image -->
+        android:src="@drawable/icon_logo" <!-- Logo image resource -->
+        android:contentDescription="Logo" <!-- Accessibility description -->
+        android:scaleType="fitCenter" <!-- Fit image inside view while maintaining aspect ratio -->
+        android:elevation="10dp" <!-- Draw above background -->
+        app:layout_constraintTop_toTopOf="@id/logoGuide" <!-- Align top with logo guideline -->
+        app:layout_constraintStart_toStartOf="parent" <!-- Center horizontally -->
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Play Button -->
+    <ImageButton
+        android:id="@+id/btnPlayImage" <!-- ID to reference in Java -->
+        android:layout_width="wrap_content" <!-- Button width based on image -->
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_button" <!-- Ripple effect on click -->
+        android:clickable="true" <!-- Enable click events -->
+        android:contentDescription="Play" <!-- Accessibility description -->
+        android:elevation="20dp" <!-- Appear above logo -->
+        android:focusable="true" <!-- Can be focused for accessibility -->
+        android:scaleType="fitCenter" <!-- Scale image inside button -->
+        android:src="@drawable/btn_play" <!-- Button image -->
+        android:stateListAnimator="@null" <!-- Disable default material animation -->
+        app:layout_constraintTop_toTopOf="@id/playGuide" <!-- Align top with play guideline -->
+        app:layout_constraintStart_toStartOf="parent" <!-- Center horizontally -->
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Info Button (currently hidden) -->
+    <ImageButton
+        android:visibility="gone" <!-- Initially hidden -->
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null" <!-- No background -->
+        android:src="@drawable/ic_info" <!-- Info icon -->
+        android:contentDescription="App Information"
+        android:scaleType="fitCenter"
+        android:elevation="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_margin="16dp" <!-- Margin from edges -->
+        app:layout_constraintTop_toTopOf="parent" <!-- Top of screen -->
+        app:layout_constraintEnd_toEndOf="parent"/> <!-- Right side of screen -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
